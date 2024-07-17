@@ -30,6 +30,7 @@ export class ManageSubscriptions extends BaseApplicationPage {
 
     CreateSubscriptionElementsButtons = {
         Product: this.page.locator('//span[@aria-label="Show Value Help" and @id="application-Subscriptions-list-component---subscriptionListView--createSubscriptionView--productInput-vhi"]'),
+        Continue: this.Containers.PopUpContainer.locator('"Continue"'),
     };
 
     Products = {
@@ -49,5 +50,9 @@ export class ManageSubscriptions extends BaseApplicationPage {
     async ChooseProduct(product: string) {
         await this.CreateSubscriptionElementsButtons.Product.click();
         await this.page.locator(`"${product}"`).first().click();
+    }
+
+    async ChooseFixedTerm(months: string) {
+        await this.CreateSubscriptionElements.InitialFixedTerm.fill(months);
     }
 }

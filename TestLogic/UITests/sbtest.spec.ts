@@ -25,9 +25,9 @@ test.describe('Subscription Billing test', () => {
         Log.step('5. Choose any product');
         await pageManager.manageSubscriptions.ChooseProduct(Products.anyProduct);
 
-        Log.step('6. Choose any date.');
-        await 
-        
+        Log.step('6. Choose term in months.');
+        await pageManager.manageSubscriptions.ChooseFixedTerm("48");
+
         await pageManager.page.pause()
     });
 });
