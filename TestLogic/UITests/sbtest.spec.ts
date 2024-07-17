@@ -1,11 +1,16 @@
 import {expect} from '@playwright/test'; 
 import {test} from '../BaseTest'
 import Log from '../../Data/Utils/Logger'
+import { PageName } from '../../Data/Enums/Data.enum';
 
 
 test.describe('Subscription Billing test', () => {
    
     test('Creating a Subscription Billing', async ({pageManager}) => {
+        Log.step('1. CLick "Manage Subscription" page.');
+        await pageManager.homepage.ChooseNecessaryPage(PageName.ManageSubscriptions);
+
+        Log.step('2. Press Create button.');
         
     });
 });
