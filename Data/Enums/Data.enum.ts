@@ -12,3 +12,11 @@ export enum Credentials {
     ManageBillingData = 'Manage Billing Data',
     ManageUsageRecords = 'Manage Usage Records'
  }
+
+ export enum Customer {
+    anyCustomer = 'Big Ten Alliance',
+ }
+
+ export enum Products {
+    anyProduct = 'Cloud Server',
+ }
