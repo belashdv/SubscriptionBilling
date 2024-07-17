@@ -1,7 +1,7 @@
 import {expect} from '@playwright/test'; 
 import {test} from '../BaseTest'
 import Log from '../../Data/Utils/Logger'
-import { PageName, Customer, Products } from '../../Data/Enums/Data.enum';
+import { PageName, Customer, Products } from '../../Data/Enums/Data.enum.ts';
 
 
 test.describe('Subscription Billing test', () => {
