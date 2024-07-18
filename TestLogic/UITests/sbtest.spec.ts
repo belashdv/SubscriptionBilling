@@ -37,6 +37,11 @@ test.describe('Subscription Billing test', () => {
         Log.step('9. Click "Create" button');
         await pageManager.subscription.Buttons.Create.click();
 
+        Log.step('10. Save Subscription number');
+        await expect(pageManager.subscription.Elements.SubscriptionNumber).toBeVisible();
+        let SubscriptionNumber = await pageManager.subscription.GetSubscriptionNumber();
+        Log.infoStep(`Subscription number is: ${SubscriptionNumber}`);
+
         await pageManager.page.pause()
     });
 });
@@ -56,7 +61,7 @@ anton.leonenko@clarity.cx', 'Greedis9good'  ✔
 Нажать на кнопку Продолжить ✔
 Заполнить все возможные поля ✔
 Нажать на кнопку Create ✔
-Сохранить номер созданной Subscription
+Сохранить номер созданной Subscription ✔
 Вернуться на главное меню 
 Нажать на manage billing data
 Ввести номер subscription в поле Subscription ID
