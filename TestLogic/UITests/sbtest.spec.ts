@@ -37,10 +37,10 @@ test.describe('Subscription Billing test', () => {
         Log.step('9. Click "Create" button');
         await pageManager.subscription.Buttons.Create.click();
 
-        Log.step('10. Save Subscription number');
+        Log.step('10. Save Subscription ID');
         await expect(pageManager.subscription.Elements.SubscriptionNumber).toBeVisible();
-        let SubscriptionNumber = await pageManager.subscription.GetSubscriptionNumber();
-        Log.infoStep(`Subscription number is: ${SubscriptionNumber}`);
+        let SubscriptionID = await pageManager.subscription.GetSubscriptionNumber();
+        Log.infoStep(`Subscription ID is: ${SubscriptionID}`);
 
         Log.step('11. Go back to Homepage');
         await pageManager.homepage.Buttons.SAP.click();
@@ -48,30 +48,19 @@ test.describe('Subscription Billing test', () => {
         Log.step('12. Click "Manage Billing Data" page.');
         await pageManager.homepage.ChooseNecessaryPage(PageName.ManageBillingData);
 
-        await pageManager.page.pause()
+        Log.step('13. Enter Subscription ID into field');
+        await pageManager.page.waitForTimeout(1500); //because playwright is too fast
+        await pageManager.manageBillingData.fillSubscriptionID(SubscriptionID);
+        
+        Log.step('14. Enter market into field');
+        //market field filled automatically
+
+        Log.step('15. Press Go button');
+        await pageManager.manageBillingData.Buttons.Go.click();
+
+        Log.step('16. Subscription is found by ID');
+        expect(pageManager.manageBillingData.TableELements.Line).toBeVisible();
+
+        //await pageManager.page.pause();
     });
 });
-
-
-
-/*
-Зайти на сайт https://test-idp.eu10.revenue.cloud.sap/launchpad#Shell-home  ✔
-anton.leonenko@clarity.cx', 'Greedis9good'  ✔
-Нажать на Manage Subscriptions  ✔
-Надать на кнопку Create ✔
-Выбрать любого кастомера    ✔
-Выбрать выбрать любой маркет    ✔
-Сохранить название маркета  ✔
-Выбрать любой продукт   ✔
-Ввести любой срок действия  ✔
-Нажать на кнопку Продолжить ✔
-Заполнить все возможные поля ✔
-Нажать на кнопку Create ✔
-Сохранить номер созданной Subscription ✔
-Вернуться на главное меню 
-Нажать на manage billing data
-Ввести номер subscription в поле Subscription ID
-В поле Markets ввести маркет из степа 7
-Нажать Go
-Убедиться, что нужная подписка сохранена
-*/

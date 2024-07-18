@@ -3,6 +3,7 @@ import { LoginPage } from "./LoginPage";
 import { BaseApplicationPage } from "./BaseApplicationPage";
 import { Homepage } from "./Homepage";
 import { ManageSubscriptions } from "../Components/ManageSubscriptions";
+import { ManageBillingData } from "../Components/ManageBillingData";
 import { Subscription } from "../Components/Subscription";
 
 export class PageManager {
@@ -11,6 +12,7 @@ export class PageManager {
     baseApplicationPage;
     homepage;
     manageSubscriptions;
+    manageBillingData;
     subscription;
 
     constructor(page) {
@@ -19,6 +21,7 @@ export class PageManager {
         this.baseApplicationPage = new BaseApplicationPage(page);
         this.homepage = new Homepage(page);
         this.manageSubscriptions = new ManageSubscriptions(page);
+        this.manageBillingData = new ManageBillingData(page);
         this.subscription = new Subscription(page);
     };
 };

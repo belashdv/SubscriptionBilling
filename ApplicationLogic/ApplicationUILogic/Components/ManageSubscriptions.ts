@@ -31,7 +31,7 @@ export class ManageSubscriptions extends BaseApplicationPage {
 
     CreateSubscriptionElementsButtons = {
         Product: this.page.locator('//span[@aria-label="Show Value Help" and @id="application-Subscriptions-list-component---subscriptionListView--createSubscriptionView--productInput-vhi"]'),
-        Continue: this.Containers.SubscriptionPopUpContainer.locator('"Continue"'),
+        Continue: this.page.locator('"Continue"'),
     };
 
     Products = {
