@@ -28,6 +28,15 @@ test.describe('Subscription Billing test', () => {
         Log.step('6. Choose term in months.');
         await pageManager.manageSubscriptions.ChooseFixedTerm("48");
 
+        Log.step('7. Press "Continue" button.');
+        await pageManager.manageSubscriptions.CreateSubscriptionElementsButtons.Continue.click();
+
+        Log.step('8. Fill mandatory fields');
+        await pageManager.subscription.FillMandatoryFields(14, 7, 12);
+
+        Log.step('9. Click "Create" button');
+        await pageManager.subscription.Buttons.Create.click();
+
         await pageManager.page.pause()
     });
 });
@@ -45,8 +54,8 @@ anton.leonenko@clarity.cx', 'Greedis9good'  ✔
 Выбрать любой продукт   ✔
 Ввести любой срок действия  ✔
 Нажать на кнопку Продолжить ✔
-Заполнить все возможные поля 
-Нажать на кнопку Create
+Заполнить все возможные поля ✔
+Нажать на кнопку Create ✔
 Сохранить номер созданной Subscription
 Вернуться на главное меню 
 Нажать на manage billing data

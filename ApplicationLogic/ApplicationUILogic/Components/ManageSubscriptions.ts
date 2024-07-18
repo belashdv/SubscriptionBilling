@@ -8,7 +8,8 @@ export class ManageSubscriptions extends BaseApplicationPage {
     Containers = {
         HeadContainer: this.page.locator('[class="sapFDynamicPageHeaderWrapper"]'), 
         MainContainer: this.page.locator('[class="sapFDynamicPageContent"]'),
-        PopUpContainer: this.page.locator(`//*[contains(@data-sap-ui-popup,'id-1721218923579-192')]`)
+        SubscriptionPopUpContainer: this.page.locator(`[class="sapMDialog sapMDialog-CTX sapMPopup-CTX sapMDialogDraggable sapUiShd sapMDialogOpen sapUiUserSelectable"]`),
+        ProductPopUpContainer: this.page.locator(`[class="sapMDialog sapMDialog-CTX sapMPopup-CTX sapMDialogOpen sapMDialogWithSubHeader sapMDialogDraggable sapUiShd sapUiUserSelectable"]`)
     };
 
     Elements = {
@@ -30,11 +31,11 @@ export class ManageSubscriptions extends BaseApplicationPage {
 
     CreateSubscriptionElementsButtons = {
         Product: this.page.locator('//span[@aria-label="Show Value Help" and @id="application-Subscriptions-list-component---subscriptionListView--createSubscriptionView--productInput-vhi"]'),
-        Continue: this.Containers.PopUpContainer.locator('"Continue"'),
+        Continue: this.Containers.SubscriptionPopUpContainer.locator('"Continue"'),
     };
 
     Products = {
-        CloudServer: this.page.locator('"Cloud Server"'),
+        CloudServer: this.Containers.ProductPopUpContainer.locator('"Cloud Server"'),
     }
 
     async ChooseCustomer(customer: string) {
@@ -49,6 +50,7 @@ export class ManageSubscriptions extends BaseApplicationPage {
 
     async ChooseProduct(product: string) {
         await this.CreateSubscriptionElementsButtons.Product.click();
+        await this.page.waitForTimeout(1500);
         await this.page.locator(`"${product}"`).first().click();
     }
 
