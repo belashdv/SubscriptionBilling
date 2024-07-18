@@ -42,6 +42,12 @@ test.describe('Subscription Billing test', () => {
         let SubscriptionNumber = await pageManager.subscription.GetSubscriptionNumber();
         Log.infoStep(`Subscription number is: ${SubscriptionNumber}`);
 
+        Log.step('11. Go back to Homepage');
+        await pageManager.homepage.Buttons.SAP.click();
+
+        Log.step('12. Click "Manage Billing Data" page.');
+        await pageManager.homepage.ChooseNecessaryPage(PageName.ManageBillingData);
+
         await pageManager.page.pause()
     });
 });

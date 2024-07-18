@@ -5,8 +5,8 @@ export class BaseApplicationPage extends BasePage {
         super(page)
     }; 
 
-    MainContainers = {
-        ContainerContent: this.page.locator('[class="sapUshellTileContainerContent"]'), 
-        ContainerItem: this.page.locator('[class="sapUshellDashboardGroupsContainerItem"]'), 
-    }
+    // MainContainers = {
+    //     ContainerContent: this.page.locator('[class="sapUshellTileContainerContent"]'), 
+    //     ContainerItem: this.page.locator('[class="sapUshellDashboardGroupsContainerItem"]'), 
+    // }
 }
